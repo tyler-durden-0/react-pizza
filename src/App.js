@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="wrapper">
       <Header />
-      <Button>Привет</Button>
+      <Button outline>Привет</Button>
       <div className="content">
         <div className="container">
           <div className="content__top">

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import classNames from 'classnames'
+
 class Button extends React.Component {
     componentDidMount() {
         console.log('Компонент дыл замаунчен')
@@ -7,7 +9,12 @@ class Button extends React.Component {
 
 
     render() {
-        return <button className='button button--card'>{this.props.children}</button>
+        return <button className={classNames(
+            'button',
+            {
+            'button--outline': this.props.outline
+            }
+        )}>{this.props.children}</button>
     }
 }
 
