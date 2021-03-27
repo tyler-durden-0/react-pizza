@@ -6,7 +6,7 @@ function Button(props) {
     console.log(props)
     return (
         <button
-            className={classNames('button', {'button--outline': props.outline})}
+            className={classNames('button', props.className, {'button--outline': props.outline})}
         >
             {props.children}
         </button>)
