@@ -2,9 +2,7 @@ import React from 'react'
 
 import logoSvg from "./assets/img/pizza-logo.svg"
 
-import Header from './components/Header'
-import Button from './components/Button'
-import Categories from './components/Categories'
+import { Header, Categories } from './components'
 
 function App() {
   return (
@@ -13,7 +11,13 @@ function App() {
       <div className="content">
         <div className="container">
           <div className="content__top">
-            <Categories />
+            <Categories items={[
+                'Мясные',
+                'Вегетарианская',
+                'Гриль',
+                'Острые',
+                'Закрытые'
+            ]}/>
             <div className="sort">
               <div className="sort__label">
                 <svg
