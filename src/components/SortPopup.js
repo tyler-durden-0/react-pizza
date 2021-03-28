@@ -6,6 +6,9 @@ function SortPopup({ items }) {
     const [activeItem, setActiveItem] = useState(0)
 
     const onClickItem = index => setActiveItem(index)
+    const toggleVisiblePopup = () => {
+        setVisiblePopup(!visiblePopup)
+    }
 
     return(
         <div className="sort">
@@ -23,7 +26,7 @@ function SortPopup({ items }) {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setVisiblePopup(!visiblePopup)}>популярности</span>
+                <span onClick={toggleVisiblePopup}>популярности</span>
             </div>
             {visiblePopup &&
                 <div className="sort__popup">
