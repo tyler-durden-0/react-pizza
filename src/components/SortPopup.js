@@ -14,7 +14,7 @@ function SortPopup({ items }) {
     //что iseEffect будет следить только за 1 рендером
     //за остальными - не будет следить
     useEffect(() => {
-        console.log('RENDER')
+        document.body.addEventListener('click', event => console.log(event.target))
     }, [])
 
     return(
