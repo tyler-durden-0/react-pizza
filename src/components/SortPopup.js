@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 function SortPopup({ items }) {
 
@@ -9,6 +9,13 @@ function SortPopup({ items }) {
     const toggleVisiblePopup = () => {
         setVisiblePopup(!visiblePopup)
     }
+
+    //пустой массив зависимости означает
+    //что iseEffect будет следить только за 1 рендером
+    //за остальными - не будет следить
+    useEffect(() => {
+        console.log('RENDER')
+    }, [])
 
     return(
         <div className="sort">
