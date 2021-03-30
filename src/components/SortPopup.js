@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 
 function SortPopup({ items }) {
 
     const [visiblePopup, setVisiblePopup] = useState(false)
     const [activeItem, setActiveItem] = useState(0)
+    const sortRef = useRef()
+
+    console.log("sortRef ", sortRef)
 
     const onClickItem = index => setActiveItem(index)
     const toggleVisiblePopup = () => {
@@ -23,7 +26,8 @@ function SortPopup({ items }) {
     }, [])
 
     return(
-        <div className="sort">
+        //ананимная фугкция в ref может полуучатть параметром ссылку на див в котором находится
+        <div ref={(elem) => {console.log(elem)}} className="sort">
             <div className="sort__label">
                 <svg
                     width="10"
