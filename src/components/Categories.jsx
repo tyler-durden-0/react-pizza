@@ -33,7 +33,7 @@ import React, { useState } from 'react'
 //     }
 // }
 
-function Categories({ items }){
+function Categories({ items, onClickItem }){
 
     //Работаем с хуками
     const [activeItem, setActiveItem] = useState(0)
