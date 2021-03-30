@@ -28,9 +28,7 @@ function SortPopup({ items }) {
 
     return(
         //ананимная фугкция в ref может полуучатть параметром ссылку на див в котором находится
-        <div ref={(ref) => {
-            sortRef.current = ref
-        }} className="sort">
+        <div ref={sortRef} className="sort">
             <div className="sort__label">
                 <svg
                     width="10"
