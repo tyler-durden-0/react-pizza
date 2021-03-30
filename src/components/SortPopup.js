@@ -10,11 +10,16 @@ function SortPopup({ items }) {
         setVisiblePopup(!visiblePopup)
     }
 
+    const handleOutsideClick = (e) => {
+        console.log(e)
+    }
+
+
     //пустой массив зависимости означает
     //что iseEffect будет следить только за 1 рендером
     //за остальными - не будет следить
     useEffect(() => {
-        document.body.addEventListener('click', event => console.log(event.target))
+        document.body.addEventListener('click', handleOutsideClick)
     }, [])
 
     return(
