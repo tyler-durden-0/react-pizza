@@ -6,15 +6,15 @@ function SortPopup({ items }) {
     const [activeItem, setActiveItem] = useState(0)
     const sortRef = useRef()
 
-    console.log("sortRef ", sortRef)
-
     const onClickItem = index => setActiveItem(index)
     const toggleVisiblePopup = () => {
         setVisiblePopup(!visiblePopup)
     }
 
     const handleOutsideClick = (e) => {
-        console.log(e)
+        if(e.path.includes(sortRef.current)){
+            console.log('hello')
+        }
     }
 
 
@@ -23,7 +23,6 @@ function SortPopup({ items }) {
     //за остальными - не будет следить
     useEffect(() => {
         document.body.addEventListener('click', handleOutsideClick)
-        console.log('sortRef ', sortRef)
     }, [])
 
     return(
