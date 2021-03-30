@@ -2,7 +2,8 @@ import React from 'react'
 
 import logoSvg from "./assets/img/pizza-logo.svg"
 
-import { Header, Home } from './components'
+import { Header } from './components'
+import {Home} from './pages'
 
 function App() {
   return (
