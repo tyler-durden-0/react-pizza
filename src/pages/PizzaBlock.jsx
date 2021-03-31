@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PizzaBlock({ name, imageUrl }) {
+function PizzaBlock({ name, imageUrl,price }) {
     return(
         <div className="pizza-block">
             <img
@@ -21,7 +21,7 @@ function PizzaBlock({ name, imageUrl }) {
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">от 395 ₽</div>
+                <div className="pizza-block__price">от {price} ₽</div>
                 <div className="button button--outline button--add">
                     <svg
                         width="12"
