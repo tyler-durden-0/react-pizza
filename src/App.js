@@ -11,7 +11,7 @@ function App() {
 
     useEffect(() => {
         fetch('http://localhost:3000/db.json')
-            .then( res => res.json)
+            .then( res => res.json())
             .then(data => setPizzas(data.pizzas))
     }, [])
 
@@ -20,7 +20,7 @@ function App() {
     <div className="wrapper">
       <Header />
       <div className="content">
-        <Route exact path='/' component={Home} />
+        <Route exact path='/' render={() => <Home items={pizzas}/>} />
         <Route exact path='/cart' component={Cart} />
       </div>
     </div>
