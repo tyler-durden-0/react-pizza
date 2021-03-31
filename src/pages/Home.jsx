@@ -3,6 +3,7 @@ import {Categories, SortPopup, PizzaBlock} from "../components";
 
 
 function Home({ items }) {
+    console.log(items)
     return(
         <div className="container">
             <div className="content__top">
@@ -23,7 +24,11 @@ function Home({ items }) {
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {
-                    items.map((obj, index) => <PizzaBlock key={index} name={obj.name} />)
+                    items.map((obj) => <PizzaBlock
+                        key={obj.id}
+                        name={obj.name}
+                        imageUrl = {obj.imageUrl}
+                    />)
                 }
             </div>
         </div>
