@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 function PizzaBlock({ name, imageUrl, price, types }) {
     const typeNames = ['тонкое', 'традиционное']
-    const [activeType, setActiveType] = useState(0)
+    const [activeType, setActiveType] = useState(types[0])
 
     const onSelectType = (index) => {
         setActiveType(index)
