@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
+import classNames from 'classnames'
 
-function PizzaBlock({ name, imageUrl,price }) {
-    const types = ['тонкое', 'традиционное']
+function PizzaBlock({ name, imageUrl, price, types }) {
+    const typeNames = ['тонкое', 'традиционное']
     const [activeType, setActiveType] = useState(0)
 
     const onSelectType = (index) => {
         setActiveType(index)
     }
+
 
     return(
         <div className="pizza-block">
@@ -18,9 +20,13 @@ function PizzaBlock({ name, imageUrl,price }) {
             <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    {types.map((type, index) => <li
+                    {typeNames.map((type, index) => <li
+                        key={type}
                         onClick={() => onSelectType(index)}
-                        className={activeType === index ? 'active' : ''}
+                        className={classNames({
+                            'active': activeType === index,
+                            'disabled': !types.includes(index)
+                        })}
                     >
                         {type}
                     </li>)
