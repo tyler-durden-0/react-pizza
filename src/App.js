@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 import {Route} from 'react-router-dom'
 
 import logoSvg from "./assets/img/pizza-logo.svg"
@@ -10,9 +11,10 @@ function App() {
     const [pizzas, setPizzas] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/db.json')
-            .then( res => res.json())
-            .then(data => setPizzas(data.pizzas))
+        axios.get('http://localhost:3000/db.json').then(({data}) => setPizzas(data.pizzas))
+        // fetch('http://localhost:3000/db.json')
+        //     .then( res => res.json())
+        //     .then(data => setPizzas(data.pizzas))
     }, [])
 
   //где хочу там и могу написать Route
