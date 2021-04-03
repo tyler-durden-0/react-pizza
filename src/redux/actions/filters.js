@@ -5,3 +5,8 @@ const setSortBy = (name) => {
     }
 }
 
+//немного другим способом пишим action, чем setSortBy
+const setCategory = (catIndex) => ({
+        type: 'SET_CATEGORY',
+        payload: catIndex
+})
