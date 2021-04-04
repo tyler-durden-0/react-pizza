@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Route} from 'react-router-dom'
 
-import logoSvg from "./assets/img/pizza-logo.svg"
+//import logoSvg from "./assets/img/pizza-logo.svg"
 
 import { Header } from './components'
 import { Home, Cart } from './pages'
