@@ -7,26 +7,40 @@ import {Route} from 'react-router-dom'
 import { Header } from './components'
 import { Home, Cart } from './pages'
 
-function App() {
-    const [pizzas, setPizzas] = useState([])
+// function App() {
+//     const [pizzas, setPizzas] = useState([])
+//
+//     useEffect(() => {
+//         axios.get('http://localhost:3000/db.json').then(({data}) => setPizzas(data.pizzas))
+//         // fetch('http://localhost:3000/db.json')
+//         //     .then( res => res.json())
+//         //     .then(data => setPizzas(data.pizzas))
+//     }, [])
+//
+//   //где хочу там и могу написать Route
+//   return (
+//     <div className="wrapper">
+//       <Header />
+//       <div className="content">
+//         <Route exact path='/' render={() => <Home items={pizzas}/>} />
+//         <Route exact path='/cart' component={Cart} />
+//       </div>
+//     </div>
+//   );
+// }
 
-    useEffect(() => {
-        axios.get('http://localhost:3000/db.json').then(({data}) => setPizzas(data.pizzas))
-        // fetch('http://localhost:3000/db.json')
-        //     .then( res => res.json())
-        //     .then(data => setPizzas(data.pizzas))
-    }, [])
-
-  //где хочу там и могу написать Route
-  return (
-    <div className="wrapper">
-      <Header />
-      <div className="content">
-        <Route exact path='/' render={() => <Home items={pizzas}/>} />
-        <Route exact path='/cart' component={Cart} />
-      </div>
-    </div>
-  );
+class App extends React.Component {
+    render() {
+        return(
+            <div className="wrapper">
+                <Header />
+                    <div className="content">
+                        <Route exact path='/' render={() => <Home items={[]}/>} />
+                        <Route exact path='/cart' component={Cart} />
+                    </div>
+            </div>
+        )
+    }
 }
 
 export default App;
