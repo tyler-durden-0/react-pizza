@@ -55,7 +55,8 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     //console.log(state, "App mapStateToProps")
     return {
-        items: state.pizzas.items
+        items: state.pizzas.items,
+        filters: state.filters
     }
 }
 
