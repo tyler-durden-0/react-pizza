@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 import { Header } from './components'
 import { Home, Cart } from './pages'
-import { setPizzas } from './redux/actions/pizzas'
+import { setPizzas as setPizzasAction} from './redux/actions/pizzas'
 
 // function App() {
 //     const [pizzas, setPizzas] = useState([])
@@ -34,7 +34,7 @@ class App extends React.Component {
     //когда компонент будет первый раз отрендарин
     componentDidMount() {
         axios.get('http://localhost:3000/db.json').then(({data}) => {
-                window.store.dispatch(setPizzas(data.pizzas))
+                this.props.setPizzas(data.pizzas)
             })
     }
 
@@ -59,7 +59,13 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        setPizzas: (item) => dispatch(setPizzasAction(item))
+    }
+}
+
 //соединяю компонент с Redux, connect показывает что классовый компонент App должен следить за изменением хранилища ->
 //каждый раз, когда в строке будут происходить изменения хранилища App будет производить ререндер тогда когда это надо
 //указываю что connect должен получать класс App
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
