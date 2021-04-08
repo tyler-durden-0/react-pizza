@@ -8,10 +8,14 @@ import { Header } from './components'
 import { Home, Cart } from './pages'
 import { setPizzas } from './redux/actions/pizzas'
 
-function App({ items }) {
-
+function App() {
+    //делаем функцию dispatch
     const dispatch = useDispatch()
     console.log(dispatch)
+
+    //хочу вытащить из store фильтрацию и сами пиццы
+    const hranilishe = useSelector(state => state)
+    console.log(hranilishe)
 
     useState(() => {
         axios.get('http://localhost:3000/db.json').then(({data}) => {
@@ -31,23 +35,3 @@ function App({ items }) {
 }
 
 export default App
-
-//вызывается каждый раз после вызова диспачта
-// const mapStateToProps = (state) => {
-//     //console.log(state, "App mapStateToProps")
-//     return {
-//         items: state.pizzas.items,
-//         filters: state.filters
-//     }
-// }
-//
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         setPizzas: (item) => dispatch(setPizzasAction(item))
-//     }
-// }
-
-//соединяю компонент с Redux, connect показывает что классовый компонент App должен следить за изменением хранилища ->
-//каждый раз, когда в строке будут происходить изменения хранилища App будет производить ререндер тогда когда это надо
-//указываю что connect должен получать класс App
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
