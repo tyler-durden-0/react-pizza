@@ -19,31 +19,31 @@ function App({ setPizzas, items }) {
         <div className="wrapper">
             <Header />
             <div className="content">
-                <Route exact path='/' render={() => <Home items={items}/>} />
+                <Route exact path='/' render={() => <Home items={[]}/>} />
                 <Route exact path='/cart' component={Cart} />
             </div>
         </div>
     )
 }
 
-
+export default App
 
 //вызывается каждый раз после вызова диспачта
-const mapStateToProps = (state) => {
-    //console.log(state, "App mapStateToProps")
-    return {
-        items: state.pizzas.items,
-        filters: state.filters
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        setPizzas: (item) => dispatch(setPizzasAction(item))
-    }
-}
+// const mapStateToProps = (state) => {
+//     //console.log(state, "App mapStateToProps")
+//     return {
+//         items: state.pizzas.items,
+//         filters: state.filters
+//     }
+// }
+//
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         setPizzas: (item) => dispatch(setPizzasAction(item))
+//     }
+// }
 
 //соединяю компонент с Redux, connect показывает что классовый компонент App должен следить за изменением хранилища ->
 //каждый раз, когда в строке будут происходить изменения хранилища App будет производить ререндер тогда когда это надо
 //указываю что connect должен получать класс App
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
