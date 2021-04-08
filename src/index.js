@@ -9,14 +9,12 @@ import './scss/app.scss';
 import App from './App';
 
 ReactDOM.render(
-  <React.StrictMode>
-      {/*если мы хотим использовать react-router - мы должны полностью обернуть наше приложение*/}
-      {/*Route нельзя использовать вне BrowserRouter*/}
-      <Router>
-          <Provider store={store}>
-              <App />
-          </Provider>
-      </Router>
-  </React.StrictMode>,
+    /*если мы хотим использовать react-router - мы должны полностью обернуть наше приложение*/
+    /*Route нельзя использовать вне BrowserRouter*/
+    <Router>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </Router>,
   document.getElementById('root')
 );

@@ -1,17 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Route} from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 import { Header } from './components'
 import { Home, Cart } from './pages'
-import { setPizzas as setPizzasAction} from './redux/actions/pizzas'
+import { setPizzas } from './redux/actions/pizzas'
 
-function App({ setPizzas, items }) {
+function App({ items }) {
+
+    const dispatch = useDispatch()
+    console.log(dispatch)
+
     useState(() => {
         axios.get('http://localhost:3000/db.json').then(({data}) => {
-            setPizzas(data.pizzas)
+            dispatch(setPizzas(data.pizzas))
         })
     },[])
 
