@@ -11,10 +11,14 @@ import { setPizzas } from './redux/actions/pizzas'
 function App() {
     //делаем функцию dispatch
     const dispatch = useDispatch()
-    console.log(dispatch)
 
     //хочу вытащить из store фильтрацию и сами пиццы
-    const hranilishe = useSelector(state => state)
+    const hranilishe = useSelector(({ pizzas, filters }) => {
+        return {
+            items: pizzas.items,
+            sortBy: filters.sortBy
+        }
+    })
     console.log(hranilishe)
 
     useState(() => {
