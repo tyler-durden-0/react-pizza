@@ -1,5 +1,5 @@
 //Action creator
-const setSortBy = (name) => {
+export const setSortBy = (name) => {
     return {
         type: 'SET_SORT_BY',
         payload: name
@@ -14,7 +14,7 @@ const setSortBy = (name) => {
 // }
 
 //немного другим способом пишим action, чем setSortBy
-const setCategory = (catIndex) => ({
+export const setCategory = (catIndex) => ({
         type: 'SET_CATEGORY',
         payload: catIndex
 })

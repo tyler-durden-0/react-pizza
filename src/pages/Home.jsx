@@ -1,10 +1,12 @@
 import React from 'react'
 import {Categories, SortPopup, PizzaBlock} from "../components";
-import {useSelector} from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
+
+import { setCategory } from '../redux/actions/filters'
 
 
 function Home() {
-
+    const dispatch = useDispatch()
     //хочу вытащить из store фильтрацию и сами пиццы
     const items = useSelector(({ pizzas }) => pizzas.items)
 
