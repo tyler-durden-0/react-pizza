@@ -6,11 +6,7 @@ import {useSelector} from "react-redux";
 function Home() {
 
     //хочу вытащить из store фильтрацию и сами пиццы
-    const { items } = useSelector(({ pizzas, filters }) => {
-        return {
-            items: pizzas.items
-        }
-    })
+    const items = useSelector(({ pizzas }) => pizzas.items)
 
     return(
         <div className="container">
