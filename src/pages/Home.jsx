@@ -4,28 +4,24 @@ import { useSelector, useDispatch} from "react-redux";
 
 import { setCategory } from '../redux/actions/filters'
 
+const categoryNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
 
 function Home() {
     const dispatch = useDispatch()
     //хочу вытащить из store фильтрацию и сами пиццы
     const items = useSelector(({ pizzas }) => pizzas.items)
 
-    const onSelectCategory = (index) => {
+    //мемоизируем колбэк
+    const onSelectCategory = React.useCallback((index) => {
         dispatch(setCategory(index))
-    }
+    }, [ ])
 
     return(
         <div className="container">
             <div className="content__top">
                 <Categories
                     onClickItem={onSelectCategory}
-                    items={[
-                        'Мясные',
-                        'Вегетарианская',
-                        'Гриль',
-                        'Острые',
-                        'Закрытые'
-                    ]}/>
+                    items={categoryNames}/>
                 <SortPopup items={[
                     {name: 'популярности', type: 'popular'},
                     {name: 'цене', type: 'price'},
