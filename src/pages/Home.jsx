@@ -14,7 +14,7 @@ function Home() {
         <div className="container">
             <div className="content__top">
                 <Categories
-                    onClickItem={(name) => console.log(name)}
+                    onClickItem={(index) => dispatch(setCategory(index))}
                     items={[
                         'Мясные',
                         'Вегетарианская',
