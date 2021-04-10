@@ -5,6 +5,11 @@ import { useSelector, useDispatch} from "react-redux";
 import { setCategory } from '../redux/actions/filters'
 
 const categoryNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
+const sortItems = [
+    {name: 'популярности', type: 'popular'},
+    {name: 'цене', type: 'price'},
+    {name: 'алфавиту', type: 'alphabet'}
+]
 
 function Home() {
     const dispatch = useDispatch()
@@ -22,11 +27,7 @@ function Home() {
                 <Categories
                     onClickItem={onSelectCategory}
                     items={categoryNames}/>
-                <SortPopup items={[
-                    {name: 'популярности', type: 'popular'},
-                    {name: 'цене', type: 'price'},
-                    {name: 'алфавиту', type: 'alphabet'}
-                ]}/>
+                <SortPopup items={sortItems}/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
