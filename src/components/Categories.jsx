@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Categories({ items, onClickItem }){
+const Categories = React.memo(function Categories({ items, onClickItem }){
 
     //Работаем с хуками
     const [activeItem, setActiveItem] = useState(0)
@@ -24,6 +24,6 @@ function Categories({ items, onClickItem }){
             </ul>
         </div>
     )
-}
+})
 
 export default Categories
