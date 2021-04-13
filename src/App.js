@@ -6,14 +6,14 @@ import { useDispatch } from 'react-redux'
 
 import { Header } from './components'
 import { Home, Cart } from './pages'
-import { setPizzas } from './redux/actions/pizzas'
+import {fetchPizzas, setPizzas} from './redux/actions/pizzas'
 
 function App() {
     //делаем функцию dispatch
     const dispatch = useDispatch()
 
     useEffect(() => {
-
+        console.log(fetchPizzas())
     },[])
 
     return(
