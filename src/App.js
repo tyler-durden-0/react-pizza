@@ -13,7 +13,7 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log(fetchPizzas())
+        console.log(fetchPizzas(dispatch))
     },[])
 
     return(
