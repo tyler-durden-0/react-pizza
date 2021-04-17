@@ -20,9 +20,7 @@ function Home() {
     useEffect(() => {
         //Важно, это необходимо для того чтобы после
         //переходов по роутам не происходило лишних запросов
-        if(!items.length) {
-            dispatch(fetchPizzas())
-        }
+        dispatch(fetchPizzas())
     },[])
 
     //мемоизируем колбэк

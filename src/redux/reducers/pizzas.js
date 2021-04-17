@@ -9,7 +9,8 @@ const pizzas = (state = initialState, action) => {
             return {
                 //берем старые значения объекта и меняем в нем sortBy
                 ...state,
-                items: action.payload
+                items: action.payload,
+                isLoaded: true
             }
         default:
             return state
