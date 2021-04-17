@@ -2,11 +2,17 @@ import React, {useState} from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
-function Index({ name, imageUrl, price, types, sizes }) {
+import PizzaLoadingBlock from "./PizzaLoadingBlock";
+
+function PizzaBlock({ name, imageUrl, price, types, sizes, isLoading }) {
     const availableTypes = ['тонкое', 'традиционное']
     const availableSize = [26, 30, 40]
     const [activeType, setActiveType] = useState(types[0])
     const [activeSize, setActiveSize] = useState(sizes[0])
+
+    if(isLoading) {
+        return <PizzaLoadingBlock />
+    }
 
     const onSelectType = (index) => {
         setActiveType(index)
@@ -76,13 +82,18 @@ function Index({ name, imageUrl, price, types, sizes }) {
     )
 }
 
-Index.propTypes = {
+PizzaBlock.propTypes = {
     name: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     //В массива types должен быть оязательно массив чисел
     types: PropTypes.arrayOf(PropTypes.number).isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.number).isRequired
+    sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+    isLoaded: PropTypes.bool
 }
 
-export default Index
+PizzaBlock.defaultProps = {
+    isLoaded: false
+}
+
+export default PizzaBlock

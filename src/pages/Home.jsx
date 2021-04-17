@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {Categories, SortPopup, Index} from "../components";
+import {Categories, SortPopup, PizzaBlock} from "../components";
 import { useSelector, useDispatch} from "react-redux";
 
 import { setCategory } from '../redux/actions/filters'
@@ -40,7 +40,7 @@ function Home() {
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {
-                    isLoaded && items.map((obj) => <Index key={obj.id} {...obj} />)
+                    isLoaded && items.map((obj) => <PizzaBlock key={obj.id} isLoading={true} {...obj} />)
                 }
             </div>
         </div>
