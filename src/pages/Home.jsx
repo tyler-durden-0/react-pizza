@@ -16,6 +16,7 @@ function Home() {
     const dispatch = useDispatch()
     //хочу вытащить из store фильтрацию и сами пиццы
     const items = useSelector(({ pizzas }) => pizzas.items)
+    const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded)
 
     useEffect(() => {
         //Важно, это необходимо для того чтобы после
@@ -39,7 +40,7 @@ function Home() {
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {
-                    items && items.map((obj) => <Index key={obj.id} {...obj} />)
+                    isLoaded && items.map((obj) => <Index key={obj.id} {...obj} />)
                 }
             </div>
         </div>
