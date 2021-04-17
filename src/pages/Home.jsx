@@ -28,7 +28,7 @@ function Home() {
     //мемоизируем колбэк
     const onSelectCategory = React.useCallback((index) => {
         dispatch(setCategory(index))
-    }, [ ])
+    }, [])
 
     return(
         <div className="container">

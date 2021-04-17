@@ -12,6 +12,12 @@ const pizzas = (state = initialState, action) => {
                 items: action.payload,
                 isLoaded: true
             }
+        case 'SET_LOADED':
+            return {
+                //берем старые значения объекта и меняем в нем sortBy
+                ...state,
+                isLoaded: action.payload
+            }
         default:
             return state
     }
