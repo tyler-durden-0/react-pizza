@@ -18,7 +18,11 @@ function Home() {
     const items = useSelector(({ pizzas }) => pizzas.items)
 
     useEffect(() => {
-        dispatch(fetchPizzas())
+        //Важно, это необходимо для того чтобы после
+        //переходов по роутам не происходило лишних запросов
+        if(!items.length) {
+            dispatch(fetchPizzas())
+        }
     },[])
 
     //мемоизируем колбэк
