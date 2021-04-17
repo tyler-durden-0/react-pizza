@@ -17,6 +17,7 @@ function Home() {
     //хочу вытащить из store фильтрацию и сами пиццы
     const items = useSelector(({ pizzas }) => pizzas.items)
     const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded)
+    const { category, sortBy } = useSelector(({ filters }) => filters)
 
     useEffect(() => {
         //Важно, это необходимо для того чтобы после
@@ -42,7 +43,7 @@ function Home() {
                 {
                     isLoaded
                         ? items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)
-                        : Array(10).fill(<PizzaLoadingBlock/>)
+                        : Array(12).fill(0).map((_, index) => <PizzaLoadingBlock key={index} />)
                 }
             </div>
         </div>
