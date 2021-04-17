@@ -6,16 +6,8 @@ import { useDispatch } from 'react-redux'
 
 import { Header } from './components'
 import { Home, Cart } from './pages'
-import {fetchPizzas, setPizzas} from './redux/actions/pizzas'
 
 function App() {
-    //делаем функцию dispatch
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(fetchPizzas())
-    },[])
-
     return(
         <div className="wrapper">
             <Header />
