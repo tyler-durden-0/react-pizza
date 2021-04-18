@@ -13,7 +13,6 @@ const filters = (state = initialState, action) => {
             }
         case 'SET_CATEGORY':
             return {
-                //берем старые значения объекта и меняем в нем sortBy
                 ...state,
                 category: action.payload
             }

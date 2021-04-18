@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const Categories = React.memo(function Categories({ items, onClickItem }){
 
     //Работаем с хуками
-    const [activeItem, setActiveItem] = useState(0)
+    const [activeItem, setActiveItem] = useState(null)
 
     const onSelectItem = (index) => {
         setActiveItem(index)
