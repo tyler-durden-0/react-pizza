@@ -35,7 +35,7 @@ function Home() {
             <div className="content__top">
                 <Categories
                     activeCategory={category}
-                    onClickItem={onSelectCategory}
+                    onClickCategory={onSelectCategory}
                     items={categoryNames}/>
                 <SortPopup items={sortItems}/>
             </div>
