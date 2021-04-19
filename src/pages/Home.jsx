@@ -23,7 +23,7 @@ function Home() {
         //Важно, это необходимо для того чтобы после
         //переходов по роутам не происходило лишних запросов
         dispatch(fetchPizzas())
-    },[category])
+    },[category, sortBy])
 
     //мемоизируем колбэк
     const onSelectCategory = React.useCallback((index) => {
