@@ -9,7 +9,7 @@ export const setLoaded = (val) => ({
 export const fetchPizzas = (category, sortBy) => (dispatch) => {
     console.log(category, sortBy)
     dispatch(setLoaded(false))
-    axios.get('http://localhost:3001/pizzas').then(({data}) => {
+    axios.get(`http://localhost:3001/pizzas?category=${category}`).then(({data}) => {
         dispatch(setPizzas(data))
     })
 }
