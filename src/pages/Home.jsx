@@ -22,7 +22,7 @@ function Home() {
     useEffect(() => {
         //Важно, это необходимо для того чтобы после
         //переходов по роутам не происходило лишних запросов
-        dispatch(fetchPizzas())
+        dispatch(fetchPizzas(category, sortBy))
     },[category, sortBy])
 
     //мемоизируем колбэк
