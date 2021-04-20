@@ -7,9 +7,9 @@ export const setLoaded = (val) => ({
 
 //ассинхронный экшн возвращающий функцию
 export const fetchPizzas = (category, sortBy) => (dispatch) => {
-    console.log(category, sortBy)
     dispatch(setLoaded(false))
-    axios.get(`http://localhost:3001/pizzas?category=${category}`).then(({data}) => {
+    axios.get(
+        `http://localhost:3001/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${sortBy.type}&_order=${sortBy.order}`).then(({data}) => {
         dispatch(setPizzas(data))
     })
 }
