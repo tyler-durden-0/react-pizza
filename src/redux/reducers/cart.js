@@ -1,7 +1,7 @@
 const initialState = {
     items: [],
     totalPrice: 0,
-    itemsCount: 0
+    totalCount: 0
 }
 
 const cart = (state = initialState, action) => {
