@@ -11,10 +11,9 @@ const cart = (state = initialState, action) => {
                 //берем старые значения объекта и меняем в нем totalPrice
                 ...state,
                 items: {
-                    [action.payload.id]: [
-                        ...state.items[action.payload.id],
-                        action.payload
-                    ]
+                    [action.payload.id]: !state.items[action.payload.id]
+                        ? [action.payload]
+                        : [...state.items[action.payload.id], action.payload]
                 }
             }
         default:
