@@ -19,7 +19,15 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza }
     }
 
     const onAddPizza = () => {
-        onClickAddPizza({id, name, imageUrl, price})
+        const obj = {
+            id,
+            name,
+            imageUrl,
+            price,
+            size: activeSize,
+            type: activeType
+        }
+        onClickAddPizza(obj)
     }
 
     return(
