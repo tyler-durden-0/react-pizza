@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 import Button from "../Button";
 
-
 function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza }) {
     const availableTypes = ['тонкое', 'традиционное']
     const availableSize = [26, 30, 40]
@@ -17,6 +16,10 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza }
 
     const onSelectSize = (size) => {
         setActiveSize(size)
+    }
+
+    const onAddPizza = () => {
+        onClickAddPizza({id, name, imageUrl, price})
     }
 
     return(
@@ -58,7 +61,7 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza }
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <Button onClick={() => onClickAddPizza({id, name, imageUrl, price})} className="button--add" outline>
+                <Button onClick={onAddPizza} className="button--add" outline>
                     <svg
                         width="12"
                         height="12"
