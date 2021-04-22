@@ -34,6 +34,10 @@ function Home() {
         dispatch(setSortBy(type))
     }, [])
 
+    const addPizzaToCart = obj => {
+        console.log(obj)
+    }
+
     return(
         <div className="container">
             <div className="content__top">
@@ -47,7 +51,7 @@ function Home() {
             <div className="content__items">
                 {
                     isLoaded
-                        ? items.map((obj) => <PizzaBlock onClickAddPizza={(obj) => console.log(obj)} key={obj.id} {...obj} />)
+                        ? items.map((obj) => <PizzaBlock onClickAddPizza={addPizzaToCart} key={obj.id} {...obj} />)
                         : Array(12).fill(0).map((_, index) => <PizzaLoadingBlock key={index} />)
                 }
             </div>
