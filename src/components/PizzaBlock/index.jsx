@@ -25,7 +25,7 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza }
             imageUrl,
             price,
             size: activeSize,
-            type: activeType
+            type: availableTypes[activeType]
         }
         onClickAddPizza(obj)
     }
