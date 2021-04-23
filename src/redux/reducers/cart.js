@@ -15,13 +15,17 @@ const cart = (state = initialState, action) => {
                     : [...state.items[action.payload.id], action.payload]
             }
 
+            const pizzas = [].concat.apply([], Object.values(newItems))
+            const totalPrice = pizzas.reduce((sum, obj) => obj.price + sum ,0)
+
             return {
                 //берем старые значения объекта и меняем в нем totalPrice
                 ...state,
                 items: newItems,
                 //очень хитрая логика досчета количества всех массивов, для пределения количества добавленных пицц
                 //прочитать про concat и apply
-                totalCount: [].concat.apply([], Object.values(newItems)).length
+                totalCount: [].concat.apply([], Object.values(newItems)).length,
+                totalPrice
             }
         default:
             return state
