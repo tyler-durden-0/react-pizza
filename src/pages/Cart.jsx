@@ -25,7 +25,7 @@ function Cart() {
                         </div>
                     </div>
                     <div className="content__items">
-                        <CartItem />
+                        <CartItem name="Пепперони Фреш с перцем" type="тонкое" size={26} />
                     </div>
                     <div className="cart__bottom">
                         <div className="cart__bottom-details">
