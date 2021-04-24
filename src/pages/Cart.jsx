@@ -1,7 +1,12 @@
 import React from 'react'
 import { CartItem } from "../components";
+import { useSelector } from "react-redux";
 
 function Cart() {
+
+    const {totalPrice, totalCount, items} = useSelector(({ cart }) => cart)
+    console.log(items)
+
     return (
         <div className="content">
             <div className="container container--cart">
@@ -25,12 +30,12 @@ function Cart() {
                         </div>
                     </div>
                     <div className="content__items">
-                        <CartItem name="Пепперони Фреш с перцем" type="тонкое" size={26} />
+                        {items && <CartItem name="Пепперони Фреш с перцем" type="тонкое" size={26} /> }
                     </div>
                     <div className="cart__bottom">
                         <div className="cart__bottom-details">
-                            <span> Всего пицц: <b>3 шт.</b> </span>
-                            <span> Сумма заказа: <b>900 ₽</b> </span>
+                            <span> Всего пицц: <b>{totalCount} шт.</b> </span>
+                            <span> Сумма заказа: <b>{totalPrice} ₽</b> </span>
                         </div>
                         <div className="cart__bottom-buttons">
                             <a href="/" className="button button--outline button--add go-back-btn">
