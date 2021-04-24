@@ -5,8 +5,9 @@ import SortPopup from './SortPopup'
 import Home from '../pages/Home'
 import PizzaBlock from './PizzaBlock'
 import PizzaLoadingBlock from "./PizzaBlock/PizzaLoadingBlock";
+import CartItem from './CartItem'
 
-export { Button, Header, Categories, SortPopup, Home, PizzaBlock, PizzaLoadingBlock }
+export { Button, Header, Categories, SortPopup, Home, PizzaBlock, PizzaLoadingBlock, CartItem }
 
 //То же самое что и
 // export {
