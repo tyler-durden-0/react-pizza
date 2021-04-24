@@ -5,7 +5,10 @@ import { useSelector } from "react-redux";
 function Cart() {
 
     const {totalPrice, totalCount, items} = useSelector(({ cart }) => cart)
-    console.log(items)
+
+    const addedPizzas = Object.keys(items).map(key => {
+        return items[key][0]
+    })
 
     return (
         <div className="content">
@@ -25,12 +28,11 @@ function Cart() {
                                 <path d="M8.33337 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                                 <path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
-
                             <span>Очистить корзину</span>
                         </div>
                     </div>
                     <div className="content__items">
-                        {items && <CartItem name="Пепперони Фреш с перцем" type="тонкое" size={26} /> }
+                        {addedPizzas.map(obj => (<CartItem name={obj.name} type={obj.type} size={obj.size} price={obj.price} />))}
                     </div>
                     <div className="cart__bottom">
                         <div className="cart__bottom-details">
@@ -42,7 +44,6 @@ function Cart() {
                                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
-
                                 <span>Вернуться назад</span>
                             </a>
                             <div className="button pay-btn">
