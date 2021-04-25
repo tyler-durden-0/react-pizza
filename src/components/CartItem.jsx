@@ -46,5 +46,6 @@ function CartItem({ name, type, size, price }) {
         </div>
     )
 }
+//blank
 
 export default CartItem
