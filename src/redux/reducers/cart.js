@@ -4,19 +4,29 @@ const initialState = {
     totalCount: 0
 }
 
+const getTotalPrice = arr => arr.reduce((sum, obj) => obj.price + sum ,0)
+
+
 const cart = (state = initialState, action) => {
     switch(action.type) {
         case 'ADD_PIZZA_TYPE':
+
+            const currentPizzaItems = !state.items[action.payload.id]
+                ? [action.payload]
+                : [...state.items[action.payload.id].items, action.payload]
+
             //здесь я храню актуальные данные при вызове этого экшэна
             const newItems = {
                 ...state.items,
-                [action.payload.id]: !state.items[action.payload.id]
-                    ? [action.payload]
-                    : [...state.items[action.payload.id], action.payload]
+                [action.payload.id]: {
+                    items: currentPizzaItems,
+                    totalPrice: getTotalPrice(currentPizzaItems)
+                }
             }
 
-            const pizzas = [].concat.apply([], Object.values(newItems))
-            const totalPrice = pizzas.reduce((sum, obj) => obj.price + sum ,0)
+            const items = Object.values(newItems).map(obj => obj.items)
+            const allPizzas = [].concat.apply([], items)
+            const totalPrice = getTotalPrice(allPizzas)
 
             return {
                 //берем старые значения объекта и меняем в нем totalPrice

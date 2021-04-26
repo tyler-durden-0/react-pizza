@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CartItem({ name, type, size, price }) {
+function CartItem({ name, type, size, totalPrice }) {
     return (
         <div className="cart__item">
             <div className="cart__item-img">
@@ -32,7 +32,7 @@ function CartItem({ name, type, size, price }) {
                 </div>
             </div>
             <div className="cart__item-price">
-                <b>{price} ₽</b>
+                <b>{totalPrice} ₽</b>
             </div>
             <div className="cart__item-remove">
                 <div className="button button--outline button--circle">
