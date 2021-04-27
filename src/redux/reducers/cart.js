@@ -34,7 +34,7 @@ const cart = (state = initialState, action) => {
                 items: newItems,
                 //очень хитрая логика досчета количества всех массивов, для пределения количества добавленных пицц
                 //прочитать про concat и apply
-                totalCount: [].concat.apply([], Object.values(newItems)).length,
+                totalCount: [].concat.apply([], items).length,
                 totalPrice
             }
         default:
