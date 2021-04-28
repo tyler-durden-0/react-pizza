@@ -37,7 +37,7 @@ function Cart() {
                                 name={obj.name}
                                 type={obj.type}
                                 size={obj.size}
-                                totalPrice={items[obj.id.totalPrice]}
+                                totalPrice={items[obj.id].totalPrice}
                             />))}
                     </div>
                     <div className="cart__bottom">
