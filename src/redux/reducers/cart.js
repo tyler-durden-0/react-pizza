@@ -40,7 +40,14 @@ const cart = (state = initialState, action) => {
         case 'CLEAR_CART':
             return { totalPrice: 0, totalCount: 0, items: {} }
         case 'REMOVE_CART_ITEM':
-
+            const new_Items = {
+                ...state.items
+            }
+            delete new_Items[action.payload]
+            return{
+                ...state,
+                items: new_Items
+            }
         default:
             return state
     }
