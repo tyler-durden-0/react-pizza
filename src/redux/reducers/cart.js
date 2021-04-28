@@ -43,12 +43,14 @@ const cart = (state = initialState, action) => {
             const new_Items = {
                 ...state.items
             }
+            const currentTotalCount = new_Items[action.payload].items.length
             const currentTotalPrice = new_Items[action.payload].totalPrice
             delete new_Items[action.payload]
             return{
                 ...state,
                 items: new_Items,
-                totalPrice: state.totalPrice - currentTotalPrice
+                totalPrice: state.totalPrice - currentTotalPrice,
+                totalCount: state.totalCount - currentTotalCount
             }
         default:
             return state
