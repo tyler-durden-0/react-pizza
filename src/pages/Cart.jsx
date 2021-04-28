@@ -38,6 +38,7 @@ function Cart() {
                                 type={obj.type}
                                 size={obj.size}
                                 totalPrice={items[obj.id].totalPrice}
+                                totalCount={items[obj.id].items.length}
                             />))}
                     </div>
                     <div className="cart__bottom">
