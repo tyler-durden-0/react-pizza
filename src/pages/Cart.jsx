@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom'
 
 import { CartItem } from "../components";
-import { clearCart, removeCartItem } from '../redux/actions/cart'
+import { clearCart, removeCartItem, plusCartItem, minusCartItem } from '../redux/actions/cart'
 import cartEmpty from '../assets/img/empty-cart.png'
 //импортируем таким способом картинку ибо просто указать путь в src е работает
 
@@ -26,6 +26,14 @@ function Cart() {
         if(window.confirm('Вы дейстивельно хотите удалить пиццу?')) {
             dispatch(removeCartItem(id))
         }
+    }
+
+    const onPlusItem = (id) => {
+        dispatch(plusCartItem(id))
+    }
+
+    const onMinusItem = (id) => {
+        dispatch(minusCartItem(id))
     }
 
     return (
@@ -60,6 +68,8 @@ function Cart() {
                                     totalPrice={items[obj.id].totalPrice}
                                     totalCount={items[obj.id].items.length}
                                     onRemove={onRemoveItem}
+                                    onMinus={onMinusItem}
+                                    onPlus={onPlusItem}
                                 />))}
                         </div>
                         <div className="cart__bottom">
