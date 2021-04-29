@@ -24,9 +24,10 @@ const cart = (state = initialState, action) => {
                 }
             }
 
-            const items = Object.values(newItems).map(obj => obj.items)
-            const allPizzas = [].concat.apply([], items)
-            const totalPrice = getTotalPrice(allPizzas)
+            const totalCount = Object.keys(newItems).reduce((sum, key) => newItems[key].items.length + sum, 0)
+            // const items = Object.values(newItems).map(obj => obj.items)
+            // const allPizzas = [].concat.apply([], items)
+            const totalPrice = Object.keys(newItems).reduce((sum, key) => newItems[key].totalPrice + sum, 0)
 
             return {
                 //берем старые значения объекта и меняем в нем totalPrice
@@ -34,7 +35,7 @@ const cart = (state = initialState, action) => {
                 items: newItems,
                 //очень хитрая логика досчета количества всех массивов, для пределения количества добавленных пицц
                 //прочитать про concat и apply
-                totalCount: [].concat.apply([], items).length,
+                totalCount,
                 totalPrice
             }
         case 'CLEAR_CART':
