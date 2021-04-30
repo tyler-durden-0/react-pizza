@@ -73,6 +73,28 @@ const cart = (state = initialState, action) => {
                 totalCount: totalCount_plus,
                 totalPrice: totalPrice_plus,
             };
+        case 'MINUS_CART_ITEM': {
+            const oldItems = state.items[action.payload].items;
+            const newObjItems =
+                oldItems.length > 1 ? state.items[action.payload].items.slice(1) : oldItems;
+            const newItems = {
+                ...state.items,
+                [action.payload]: {
+                    items: newObjItems,
+                    totalPrice: getTotalPrice(newObjItems),
+                },
+            };
+
+            const totalCount = Object.keys(newItems).reduce((sum, key) => newItems[key].items.length + sum, 0)
+            const totalPrice = Object.keys(newItems).reduce((sum, key) => newItems[key].totalPrice + sum, 0)
+
+            return {
+                ...state,
+                items: newItems,
+                totalCount,
+                totalPrice,
+            }
+        }
         default:
             return state
     }
