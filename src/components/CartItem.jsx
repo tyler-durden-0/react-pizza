@@ -6,11 +6,11 @@ function CartItem({ id, name, type, size, totalPrice, totalCount, onRemove, onMi
         onRemove(id)
     }
 
-    const handlePlusItem = (id) => {
+    const handlePlusItem = () => {
         onPlus(id)
     }
 
-    const handleMinusItem = (id) => {
+    const handleMinusItem = () => {
         onMinus(id)
     }
 

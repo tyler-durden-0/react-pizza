@@ -37,7 +37,7 @@ const cart = (state = initialState, action) => {
                 totalPrice
             }
         case 'CLEAR_CART':
-            return { totalPrice: 0, totalCount: 0, items: {} }
+            return {totalPrice: 0, totalCount: 0, items: {}}
         case 'REMOVE_CART_ITEM':
             const new_Items = {
                 ...state.items
@@ -45,12 +45,34 @@ const cart = (state = initialState, action) => {
             const currentTotalCount = new_Items[action.payload].items.length
             const currentTotalPrice = new_Items[action.payload].totalPrice
             delete new_Items[action.payload]
-            return{
+            return {
                 ...state,
                 items: new_Items,
                 totalPrice: state.totalPrice - currentTotalPrice,
                 totalCount: state.totalCount - currentTotalCount
             }
+        case 'PLUS_CART_ITEM':
+            const newObjItems = [
+                ...state.items[action.payload].items,
+                state.items[action.payload].items[0],
+            ];
+            const new_items = {
+                ...state.items,
+                [action.payload]: {
+                    items: newObjItems,
+                    totalPrice: getTotalPrice(newObjItems),
+                },
+            };
+
+            const totalCount_plus = Object.keys(new_items).reduce((sum, key) => new_items[key].items.length + sum, 0)
+            const totalPrice_plus = Object.keys(new_items).reduce((sum, key) => new_items[key].totalPrice + sum, 0)
+
+            return {
+                ...state,
+                items: new_items,
+                totalCount: totalCount_plus,
+                totalPrice: totalPrice_plus,
+            };
         default:
             return state
     }
