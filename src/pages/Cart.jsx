@@ -36,6 +36,10 @@ function Cart() {
         dispatch(minusCartItem(id))
     }
 
+    const onClickOrder = () => {
+        console.log('Ваш заказ', items)
+    }
+
     return (
         <div className="content">
             <div className="container container--cart">
@@ -84,7 +88,7 @@ function Cart() {
                                     </svg>
                                     <span>Вернуться назад</span>
                                 </Link>
-                                <div className="button pay-btn">
+                                <div onClick={onClickOrder} className="button pay-btn">
                                     <span>Оплатить сейчас</span>
                                 </div>
                             </div>
