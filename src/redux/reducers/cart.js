@@ -38,25 +38,26 @@ const cart = (state = initialState, action) => {
             }
         case 'CLEAR_CART':
             return {totalPrice: 0, totalCount: 0, items: {}}
-        case 'REMOVE_CART_ITEM':
-            const new_Items = {
+        case 'REMOVE_CART_ITEM': {
+            const newItems = {
                 ...state.items
             }
-            const currentTotalCount = new_Items[action.payload].items.length
-            const currentTotalPrice = new_Items[action.payload].totalPrice
-            delete new_Items[action.payload]
+            const currentTotalCount = newItems[action.payload].items.length
+            const currentTotalPrice = newItems[action.payload].totalPrice
+            delete newItems[action.payload]
             return {
                 ...state,
-                items: new_Items,
+                items: newItems,
                 totalPrice: state.totalPrice - currentTotalPrice,
                 totalCount: state.totalCount - currentTotalCount
             }
-        case 'PLUS_CART_ITEM':
+        }
+        case 'PLUS_CART_ITEM': {
             const newObjItems = [
                 ...state.items[action.payload].items,
                 state.items[action.payload].items[0],
             ];
-            const new_items = {
+            const newItems = {
                 ...state.items,
                 [action.payload]: {
                     items: newObjItems,
@@ -64,15 +65,16 @@ const cart = (state = initialState, action) => {
                 },
             };
 
-            const totalCount_plus = Object.keys(new_items).reduce((sum, key) => new_items[key].items.length + sum, 0)
-            const totalPrice_plus = Object.keys(new_items).reduce((sum, key) => new_items[key].totalPrice + sum, 0)
+            const totalCount = Object.keys(newItems).reduce((sum, key) => newItems[key].items.length + sum, 0)
+            const totalPrice = Object.keys(newItems).reduce((sum, key) => newItems[key].totalPrice + sum, 0)
 
             return {
                 ...state,
-                items: new_items,
-                totalCount: totalCount_plus,
-                totalPrice: totalPrice_plus,
+                items: newItems,
+                totalCount,
+                totalPrice,
             };
+        }
         case 'MINUS_CART_ITEM': {
             const oldItems = state.items[action.payload].items;
             const newObjItems =
